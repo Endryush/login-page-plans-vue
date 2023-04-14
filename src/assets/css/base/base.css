@@ -1,0 +1,9 @@
+@import url(_reset.css);
+@import url(_variables.css);
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;400;500;700&display=swap');
+
+body {
+	background-color: var(--background-body);
+	color: var(--color-dark92D32);
+	font-family: var(--default-font-family);
+}
