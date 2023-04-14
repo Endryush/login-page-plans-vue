@@ -1,6 +1,11 @@
 <template>
   <div class="main-header">
-    <img src="@/assets/img/logo/locaweb.svg" class="main-header--image" alt="logo-locaweb">
+    <img 
+      src="@/assets/img/logo/locaweb.svg" 
+      class="main-header--image" 
+      alt="logo-locaweb"
+    />
+
     <main-header-text v-if="routeCondition" />
   </div>
 </template>

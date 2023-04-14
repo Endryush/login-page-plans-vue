@@ -1,5 +1,10 @@
 <template>
-  <button :type="typeButton" class="btn btn-primary small-texts mt-24">{{ textButton }}</button>
+  <button 
+    :type="typeButton" 
+    class="btn btn-primary small-texts mt-24"
+  >
+    {{ textButton }}
+  </button>
 </template>
 <script>
 export default {
