@@ -5,4 +5,13 @@
   --color-pink: #F30168;
   --color-white: #FFFFFF;
   --color-gray: #515D74;
+  --color-white-secondary: #E6EAF2;
+  --font-weight-light: 400;
+  --font-weight-bold: 700;
+  --font-size-small: 16px;
+  --font-size-normal: 18px;
+  --font-size-large: 28px;
+  --font-line-height-small: 20px;
+  --font-line-height-medium: 23px;
+  --font-line-height-large: 35px;
 }

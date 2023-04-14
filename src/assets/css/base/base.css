@@ -7,3 +7,11 @@ body {
 	color: var(--color-dark92D32);
 	font-family: var(--default-font-family);
 }
+
+.main-container {
+	display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
