@@ -1,5 +1,5 @@
 <template>
-  <button :type="typeButton" class="btn btn-primary">{{ textButton }}</button>
+  <button :type="typeButton" class="btn btn-primary small-texts mt-24">{{ textButton }}</button>
 </template>
 <script>
 export default {
@@ -18,3 +18,14 @@ export default {
   }
 }
 </script>
+<style scoped>
+  .btn-primary {
+    padding: 30px 24px;
+    width: 100%;
+    gap: 24px;
+    border-radius: 5px;
+    background: var(--color-pink);
+    text-transform: uppercase;
+    color: var(--color-white);
+  }
+</style>
