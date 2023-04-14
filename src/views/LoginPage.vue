@@ -1,5 +1,5 @@
 <template>
-  <div class="box-login">
+  <div class="box-login mt-16">
     <login-box />
   </div>
 </template>
@@ -20,5 +20,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 40vw;
 }
 </style>
