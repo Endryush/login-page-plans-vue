@@ -25,4 +25,11 @@ export default {
   width: 40vw;
 }
 
+@media only screen and (max-width: 600px) {
+  .box-login {
+    width: auto;
+    padding: 0 16px;
+  }
+}
+
 </style>

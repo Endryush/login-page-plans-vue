@@ -37,4 +37,10 @@ export default {
 .badge__choosed-plan {
   background-color: #000000;
 }
+
+@media only screen and (max-width: 600px) { 
+  .badge__more-used {
+    margin-top: -30px;
+  }
+}
 </style>

@@ -216,13 +216,27 @@ export default {
 }
 
 .list-item__blur::before {
-  content: ""; /* criar um elemento pseudo antes da div */
-  position: absolute; /* posicionamento absoluto para se sobrepor à div */
+  content: "";
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   background: linear-gradient(180deg,rgba(255, 255, 255, 0.5) 100%, #FFFFFF 0%);
-  z-index: 1; /* para garantir que o fundo fique atrás da div */
+  z-index: 1;
+}
+
+@media only screen and (max-width: 600px) {
+  .box-plan {
+    padding: 16px;
+    margin-bottom: 32px;
+  }
+  .box-header__name {
+    font-size: 22px;
+  }
+
+  .box-header__price {
+    font-size: var(--font-size-large);
+  }
 }
 </style>

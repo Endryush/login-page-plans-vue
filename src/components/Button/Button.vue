@@ -46,4 +46,10 @@ export default {
   .btn-alternative {
     padding: 18px 24px;
   }
+
+  @media only screen and (max-width: 600px) {
+    .btn-primary {
+      padding: 16px 8px;
+    }
+  }
 </style>

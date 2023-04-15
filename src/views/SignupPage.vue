@@ -134,4 +134,17 @@ export default{
 .plan-list li {
   margin: 12px;
 }
+
+@media only screen and (max-width: 600px) {
+  .container {
+    width: auto;
+    padding: 0 24px;
+  }
+  .plan-list {
+    flex-direction: column;
+  }
+  .plan-list li {
+    margin: 0;
+  }
+}
 </style>

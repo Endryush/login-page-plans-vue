@@ -137,3 +137,9 @@ a, button {
 .my-32 {
 	margin: 32px 0;
 }
+
+@media only screen and (max-width: 600px) {
+  h2 {
+		font-size: var(--font-size-large--mobile);
+	}
+}

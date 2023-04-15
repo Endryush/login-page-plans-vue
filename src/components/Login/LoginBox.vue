@@ -4,7 +4,7 @@
       Entre na sua conta
     </h2>
 
-    <p class="mt-5">
+    <p class="mt-10">
       Para acessar sua conta informe seu e-mail e senha
     </p>
 
@@ -103,5 +103,11 @@ export default {
 .login-box__small-text {
   color: var(--color-gray);
   float: right;
+}
+
+@media only screen and (max-width: 600px) {
+  .login-box {
+    padding: 24px;
+  }
 }
 </style>

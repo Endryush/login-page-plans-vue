@@ -49,4 +49,14 @@
 .subtext__span {
   margin-left: 8px;
 }
+
+@media screen and (max-width: 600px) {
+  .list-item__title {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--font-size-small-small);
+    line-height: var(--font-line-height-small);
+    margin-top: 16px;
+    color: var(--color-dark-alternative);
+  }
+}
 </style>
