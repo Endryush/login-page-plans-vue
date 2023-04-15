@@ -31,8 +31,9 @@
 </template>
 
 <script>
-import ChoosePlan from '@/components/Plan/ChoosePlan.vue';
+import axios from '@/config/axios.js';
 import { plans } from '@/utils/plan-list.js';
+import ChoosePlan from '@/components/Plan/ChoosePlan.vue';
 import SignupForm from '@/components/SignupForm/SignupForm.vue';
 
 export default{
@@ -67,9 +68,24 @@ export default{
       history.pushState({ step: 2 }, null, "?step=2");
     },
 
-    signUp (data) {
-      debugger
-      console.log(data)
+    async signUp (data) {
+      try {
+        const response = await axios.post('/users', {
+          username: data.name,
+          email: data.email,
+          password: data.password,
+          phone: data.numberPhone,
+          agreeTerms: data.agreeTerms,
+          siteDomain: data.siteDomain
+        }); 
+
+        if (response.data) {
+          await this.$store.dispatch('setUserId', response.data.id);
+          this.$router.push('/home');
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
   },
 };
@@ -108,7 +124,7 @@ export default{
 }
 
 .register-plan__choosed-plan {
-  widows: 50%;
+  width: 47%;
 }
 
 .plan-list {

@@ -60,13 +60,19 @@
       />
     </div>
 
+    <error-message 
+      v-if="errorPassword" 
+      error-text="As senhas devem ser iguais!"
+      class="mb-16"
+    />
+
     <div class="site-data">
       <h2 class="my-16">Dados do seu site</h2>
 
       <div class="form-group mb-5">
         <label for="siteDomain">Nome do seu site</label>
         <input 
-          type="password" 
+          type="text" 
           class="form-control" 
           id="siteDomain" 
           v-model="formData.siteDomain"
@@ -101,9 +107,15 @@
 </template>
 <script>
   import Button from '@/components/Button/Button.vue';
+  import ErrorMessage from '../Error/ErrorMessage.vue';
 
   export default {
     name: 'SignupForm',
+    
+    components: {
+      Button,
+      ErrorMessage
+    },
 
     data() {
       return {
@@ -115,16 +127,19 @@
           passwordConfirmation: '',
           siteDomain: '',
           agreeTerms: false
-        }
+        },
+        errorPassword: false
       };
     },
 
-    components: {
-      Button
-    },
 
     methods: {
       signup () {
+        if (this.formData.password !== this.formData.passwordConfirmation) {
+          this.errorPassword = true
+          return
+        }
+
         this.$emit('sign-up', this.formData );
       }
     }

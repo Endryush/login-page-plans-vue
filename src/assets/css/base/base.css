@@ -126,6 +126,10 @@ a, button {
 	margin-bottom: 5px;
 }
 
+.mb-16 {
+	margin-bottom: 16px;
+}
+
 .my-16 {
 	margin: 16px 0;
 }

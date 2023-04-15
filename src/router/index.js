@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Login from '@/views/LoginPage.vue'
 import Signup from '@/views/SignupPage.vue'
+import Home from '@/views/HomeView.vue'
 
 const routes = [
   {
@@ -13,11 +14,11 @@ const routes = [
     name: 'Signup',
     component: Signup
   },
-  // {
-  //   path: '/choose-plan',
-  //   name: 'ChoosePlan',
-  //   component: ChoosePlan
-  // },
+  {
+    path: '/home',
+    name: 'Home',
+    component: Home
+  },
   {
     path:'/:catchAll(.*)',
     redirect: '/login'

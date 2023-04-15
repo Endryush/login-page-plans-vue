@@ -43,17 +43,40 @@
       </div>
     </div>
     <div class="box-body">
-      <list-items v-if="plan.serverLocation" :title="plan.serverLocation" />
+      <list-items 
+        v-if="plan.serverLocation" 
+        :title="plan.serverLocation" 
+      />
 
-      <list-items v-if="plan.serverEspecifications" :items="plan.serverEspecifications" />
+      <list-items 
+        v-if="plan.serverEspecifications" 
+        :items="plan.serverEspecifications" 
+      />
 
-      <list-items v-if="plan.support" :title="plan.support" />
+      <list-items 
+        v-if="plan.support" 
+        :title="plan.support" 
+      />
 
-      <list-items v-if="plan.availableApps" title="Aplicativos disponíveis;" :items="plan.availableApps" />
+      <list-items 
+        v-if="plan.availableApps" 
+        title="Aplicativos disponíveis;" 
+        :items="plan.availableApps" 
+      />
+      <div class="list-item__blur">
+        <list-items 
+          v-if="plan.freeMigration" 
+          title="Migração Gratuita;" 
+          :items="plan.freeMigration" 
+        />
+  
+        <list-items 
+          v-if="plan.moreServices" 
+          title="Você ainda tem" 
+          :items="plan.moreServices" 
+        />
+      </div>
 
-      <list-items v-if="plan.freeMigration" title="Migração Gratuita;" :items="plan.freeMigration" />
-
-      <list-items v-if="plan.moreServices" title="Você ainda tem" :items="plan.moreServices" :blur-content="choosedPlan" />
     </div>
     <div 
       v-if="choosedPlan" 
@@ -184,5 +207,22 @@ export default {
 
 .change-plan {
   padding: 0 16px;
+}
+
+.list-item__blur {
+  height: 96px;
+  overflow: hidden;
+  position: relative;
+}
+
+.list-item__blur::before {
+  content: ""; /* criar um elemento pseudo antes da div */
+  position: absolute; /* posicionamento absoluto para se sobrepor à div */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg,rgba(255, 255, 255, 0.5) 100%, #FFFFFF 0%);
+  z-index: 1; /* para garantir que o fundo fique atrás da div */
 }
 </style>
