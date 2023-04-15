@@ -1,12 +1,23 @@
 <template>
-  <div class="display-flex-column mt-32">
+  <div
+    :class="routeConditionLogout ? 'd-flex header-logout' : 'display-flex-column mt-32'"
+  >
     <img 
       src="@/assets/img/logo/locaweb.svg" 
       class="header-image" 
       alt="logo-locaweb"
     />
 
-    <main-header-text v-if="routeCondition" />
+    <div v-if="routeConditionLogout">
+      <button 
+        class="logout"
+        @click="logout"
+      >
+        <label>Sair</label>
+      </button>
+    </div>
+
+    <main-header-text v-if="routeConditionHeaderSubtext" />
   </div>
 </template>
 <script>
@@ -18,8 +29,18 @@ export default {
   components: { MainHeaderText },
 
   computed: {
-    routeCondition () {
-      return this.$route.name !== ROUTES_NAME.LOGIN
+    routeConditionHeaderSubtext () {
+      return this.$route.name === ROUTES_NAME.SIGNUP
+    },
+
+    routeConditionLogout () {
+      return this.$route.name === ROUTES_NAME.HOME
+    }
+  },
+
+  methods: {
+    logout () {
+      this.$router.push('/');
     }
   }
 }
@@ -27,5 +48,25 @@ export default {
 <style scoped>
 .header-image {
   height: 67px;
+  width: auto;
+}
+.header-logout {
+  width: 100vw;
+  justify-content: space-between;
+}
+
+.header-logout img {
+  margin-left: 32px;
+} 
+
+.header-logout div {
+  margin-right: 32px;
+} 
+
+.logout {
+  background: #FFFFFF;
+  border-radius: 5px;
+  padding: 16px 32px;
+  cursor: pointer;
 }
 </style>

@@ -63,7 +63,7 @@
         title="Aplicativos disponíveis;" 
         :items="plan.availableApps" 
       />
-      <div class="list-item__blur">
+      <div :class="{'list-item__blur' : choosedPlan}">
         <list-items 
           v-if="plan.freeMigration" 
           title="Migração Gratuita;" 
