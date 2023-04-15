@@ -37,7 +37,8 @@
         <Button
           type-button="button"
           text-button="Escolher esse plano"
-          is-button-alternative 
+          is-button-alternative
+          @click="choosePlan"
         />
       </div>
     </div>
@@ -78,6 +79,10 @@ export default {
   methods: {
     isPriceFree () {
       return typeof(this.plan?.price) !== 'number'
+    },
+
+    choosePlan () {
+      this.$emit('choose-plan', this.plan );
     }
   }
 }

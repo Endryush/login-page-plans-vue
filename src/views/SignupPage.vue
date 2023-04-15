@@ -4,13 +4,14 @@
       <h2 class="choose-plan">Escolha o seu plano</h2>
       <ul class="plan-list">
         <li v-for="(plan, index) in plans" :key="index">
-          <choose-plan :plan="plan" />
+          <choose-plan :plan="plan" @choose-plan='choosePlan' />
         </li>
       </ul>
     </div>
     <div v-else-if="step === 2">
       <h2>Formulário de cadastro:</h2>
-      <p>Plano escolhido: {{ planoEscolhido }}</p>
+      <p>Plano escolhido</p>
+      <choose-plan :plan="choosedPlan" />
       <form>
         <label for="nome">Nome:</label>
         <input type="text" id="nome" v-model="nome" required>
