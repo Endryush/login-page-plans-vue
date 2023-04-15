@@ -102,6 +102,13 @@ a, button {
 	text-decoration: underline;
 }
 
+.subtext {
+  color: var(--color-dark-alternative);
+  font-weight: var(--font-weight-light);
+  font-size: var(--font-size-small-alternative);
+  line-height: var(--font-line-height-small--alternative);
+}
+
 .mt-5 {
 	margin-top: 5px;
 }
@@ -141,5 +148,9 @@ a, button {
 @media only screen and (max-width: 600px) {
   h2 {
 		font-size: var(--font-size-large--mobile);
+	}
+
+	.subtext {
+		font-size: var(--font-size-small);
 	}
 }

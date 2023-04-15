@@ -39,12 +39,6 @@
   color: var(--color-dark-alternative);
 }
 
-.subtext {
-  color: var(--color-dark-alternative);
-  font-weight: var(--font-weight-light);
-  font-size: var(--font-size-small-alternative);
-  line-height: var(--font-line-height-small--alternative);
-}
 
 .subtext__span {
   margin-left: 8px;

@@ -42,7 +42,8 @@
         />
       </div>
     </div>
-    <div class="box-body">
+
+    <div class="box-body mobile-hidden-area" :id='`list-items${plan.id}`'>
       <list-items 
         v-if="plan.serverLocation" 
         :title="plan.serverLocation" 
@@ -77,6 +78,16 @@
         />
       </div>
 
+    </div>
+
+    <div class="mobile-show-area">
+      <a 
+        href="#" 
+        class="underline"
+        @click.prevent="() =>seeMoreLess = !seeMoreLess"
+      >
+      {{ !seeMoreLess ? 'Ver mais' : 'Ver menos' }}
+      </a>
     </div>
     <div 
       v-if="choosedPlan" 
@@ -117,6 +128,22 @@ export default {
     }
   },
 
+  data () {
+    return {
+      seeMoreLess: false
+    }
+  },
+
+  watch: {
+    seeMoreLess (value) {
+      const divElement = document.getElementById(`list-items${this.plan.id}`)
+      const display = value ? 'block' : 'none'
+      
+      
+      divElement.style.display = display
+    }
+  },
+
   methods: {
     isPriceFree () {
       return typeof(this.plan?.price) !== 'number'
@@ -132,13 +159,6 @@ export default {
 /* COMMON STYLES */
 .color-alternative {
   color: var(--color-dark-alternative);
-}
-
-.subtext {
-  color: var(--color-dark-alternative);
-  font-weight: var(--font-weight-light);
-  font-size: var(--font-size-small-alternative);
-  line-height: var(--font-line-height-small--alternative);
 }
 /* COMMON STYLES */
 
@@ -226,6 +246,10 @@ export default {
   z-index: 1;
 }
 
+.mobile-show-area {
+  display: none;
+}
+
 @media only screen and (max-width: 600px) {
   .box-plan {
     padding: 16px;
@@ -237,6 +261,18 @@ export default {
 
   .box-header__price {
     font-size: var(--font-size-large);
+  }
+
+  .mobile-show-area {
+    display: block;
+    display: flex;
+    justify-content: center;
+    color: var(--color-pink);
+    margin-top: 16px;
+  }
+
+  .mobile-hidden-area {
+    display: none;
   }
 }
 </style>
