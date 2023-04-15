@@ -1,17 +1,31 @@
 <template>
   <div class="box-plan">
     <div class="box-header">
-      <h1 class="box-header__name color-alternative">
+      <div 
+        v-if="plan.moreUsed"
+        class="box-header__more-used"
+      > 
+        Mais usado
+      </div>
+      <h1 
+        :class="{ 'alternative-header' :plan.moreUsed}"
+        class="box-header__name color-alternative"
+      >
         {{ plan.name }}
       </h1>
-  
-      <h1 class="box-header__price">
-        {{ plan.price }}
-      </h1>
-  
-      <span class="box-header__price-text color-alternative">
-        {{ plan.priceText }}
-      </span> 
+      <template v-if="isPriceFree()">
+        <h1 class="box-header__price">
+          {{ plan.price }}
+        </h1>
+      </template>
+      <template v-else>
+        <h1 class="box-header__price d-flex">
+          <span class="box-header__price--small">R$</span> 
+          {{ plan.price }}
+          <span class="box-header__price--small">/mês</span>
+        </h1>
+      </template>
+      <span class="box-header__price-text color-alternative" v-html="plan.priceText" /> 
 
       <div class="box-header__ideal">
         <span class="subtext">
@@ -28,89 +42,57 @@
       </div>
     </div>
     <div class="box-body">
-      <h4 class="box-body__subtitle color-alternative" v-html="plan.serverLocation" />
+      <list-items v-if="plan.serverLocation" :title="plan.serverLocation" />
 
-      <template v-if="plan.serverEspecifications">
-        <ul v-for="(specification, index) in plan.serverEspecifications" :key="index">
-          <li class="subtext mt-10">
-            <img src="@/assets/img/icons/check.svg" alt="check-icon" />
-            <span class="box-body__specifications" v-html="specification" />
-          </li>
-        </ul>
-      </template>
+      <list-items v-if="plan.serverEspecifications" :items="plan.serverEspecifications" />
 
-      <h4 class="box-body__subtitle color-alternative"> 
-        {{ plan.support }}
-      </h4>
+      <list-items v-if="plan.support" :title="plan.support" />
 
-      <h4 class="box-body__subtitle color-alternative"> 
-        Aplicativos disponíveis;
-      </h4>
-      <template  v-if="plan.availableApps">
-        <ul v-for="(app, index) in plan.availableApps" :key="index">
-          <li class="subtext mt-10">
-            <img src="@/assets/img/icons/check.svg" alt="check-icon" />
-            <span class="box-body__specifications" v-html="app" />
-          </li>
-        </ul>
-      </template>
+      <list-items v-if="plan.availableApps" title="Aplicativos disponíveis;" :items="plan.availableApps" />
 
-      <template v-if=plan.freeMigration> 
-        <h4 class="box-body__subtitle color-alternative"> 
-          Migração Gratuita;
-        </h4>
-        <ul v-for="(migration, index) in plan.freeMigration" :key="index">
-          <li class="subtext mt-10">
-            <img src="@/assets/img/icons/check.svg" alt="check-icon" />
-            <span class="box-body__specifications" v-html="migration" />
-          </li>
-        </ul>
-      </template>
+      <list-items v-if="plan.freeMigration" title="Migração Gratuita;" :items="plan.freeMigration" />
 
-      <h4 class="box-body__subtitle color-alternative"> 
-        Você ainda tem
-      </h4>
-
-      <template  v-if="plan.moreServices">
-        <ul v-for="(service, index) in plan.moreServices" :key="index">
-          <li class="subtext mt-10">
-            <img src="@/assets/img/icons/check.svg" alt="check-icon" />
-            <span class="box-body__specifications" v-html="service" />
-          </li>
-        </ul>
-      </template>
+      <list-items v-if="plan.moreServices" title="Você ainda tem" :items="plan.moreServices" />
     </div>
   </div>
 </template>
 <script>
 import Button from '../Button/Button.vue';
+import ListItems from './List/ListItems.vue';
 
 export default {
   name: 'ChossePlanBox',
 
   components: {
-    Button
-},
+    Button,
+    ListItems
+  },
 
   props: {
     plan: {
       required: true,
       type: Object
     }
+  },
+
+  methods: {
+    isPriceFree () {
+      return typeof(this.plan?.price) !== 'number'
+    }
   }
 }
 </script>
 <style scoped>
 /* COMMON STYLES */
+.color-alternative {
+  color: var(--color-dark-alternative);
+}
+
 .subtext {
   color: var(--color-dark-alternative);
   font-weight: var(--font-weight-light);
   font-size: var(--font-size-small-alternative);
   line-height: var(--font-line-height-small--alternative);
-}
-
-.color-alternative {
-  color: var(--color-dark-alternative);
 }
 /* COMMON STYLES */
 
@@ -125,10 +107,27 @@ export default {
   text-align: center;
 }
 
+.box-header__more-used {
+  position: relative;
+  width: fit-content;
+  margin-top: -50px;
+  padding: 8px 16px;
+  background: #10C300;
+  border-radius: 10px;
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+  text-transform: uppercase;
+}
+
 .box-header__name {
   font-weight: var(--font-weight-bold);
   font-size: 26px;
   line-height: 33px;
+}
+
+.alternative-header {
+  margin-top: 1.15rem;
 }
 
 .box-header__price {
@@ -143,7 +142,13 @@ export default {
 .box-header__price-text {
   font-weight: var(--font-weight-light);
   font-size: 14px;
-  line-height: 18px;
+  line-height: var(--font-size-large);
+}
+
+.box-header__price--small {
+  font-weight: var(--font-weight-light);
+  font-size: 20px;
+  line-height: 25px;
 }
 
 .box-header__ideal {
@@ -164,10 +169,6 @@ export default {
   font-size: var(--font-size-small-alternative);
   line-height: var(--font-line-height-small--alternative);
   margin-top: 24px;
-}
-
-.box-body__specifications {
-  margin-left: 8px;
 }
 /* BOX BODY */
 </style>

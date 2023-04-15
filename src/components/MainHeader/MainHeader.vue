@@ -1,5 +1,5 @@
 <template>
-  <div class="display-flex-column">
+  <div class="display-flex-column mt-32">
     <img 
       src="@/assets/img/logo/locaweb.svg" 
       class="header-image" 

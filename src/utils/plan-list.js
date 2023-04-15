@@ -4,7 +4,7 @@ export const plans = [
     name: 'Hospedagem 1',
     price: 'Gratis',
     moreUsed: false,
-    priceText: 'você não paga nada para usar sem taxa de setup',
+    priceText: 'você não paga nada para usar <br> sem taxa de setup',
     ideal: 'Ideal para quem está começando',
     serverLocation: 'Seu site em servidores <span class="underline">no Estados Unidos</span>',
     serverEspecifications: [
@@ -31,7 +31,7 @@ export const plans = [
     name: 'Hospedagem 2',
     price: 499,
     moreUsed: true,
-    priceText: 'cobrado mensalmente sem taxa de setup',
+    priceText: 'cobrado mensalmente <br> sem taxa de setup',
     ideal: 'Ideal para site com mais de 30k de visitas',
     serverLocation: 'Seu site em servidores <span class="underline">no Brasil</span>',
     serverEspecifications: [
@@ -57,9 +57,9 @@ export const plans = [
   {
     id: 3,
     name: 'Hospedagem 3',
-    price: 499,
-    moreUsed: true,
-    priceText: 'cobrado mensalmente sem taxa de setup',
+    price: 999,
+    moreUsed: false,
+    priceText: 'cobrado mensalmente <br>  sem taxa de setup',
     ideal: 'Ideal para site com mais de 60k de visitas',
     serverLocation: 'Seu site em servidores <span class="underline">no Brasil</span>',
     serverEspecifications: [

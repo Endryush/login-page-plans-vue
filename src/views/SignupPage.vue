@@ -69,7 +69,7 @@ export default {
 
 <style scoped>
 .container {
-  width: 70vw;
+  width: 75vw;
 }
 
 .choose-plan {
@@ -83,5 +83,9 @@ export default {
 
 .plan-list {
   display: flex;
+}
+
+.plan-list li {
+  margin: 12px;
 }
 </style>
