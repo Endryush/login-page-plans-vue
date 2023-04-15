@@ -1,8 +1,8 @@
 <template>
-  <div class="main-header">
+  <div class="display-flex-column">
     <img 
       src="@/assets/img/logo/locaweb.svg" 
-      class="main-header--image" 
+      class="header-image" 
       alt="logo-locaweb"
     />
 
@@ -11,7 +11,7 @@
 </template>
 <script>
 import MainHeaderText from '../MainHeaderText/MainHeaderText.vue';
-import { ROUTES_NAME } from '@/config/routeNames.js'
+import { ROUTES_NAME } from '@/enum/routeNames.js'
 export default {
   name: 'MainHeader',
 
@@ -25,12 +25,7 @@ export default {
 }
 </script>
 <style scoped>
-.main-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.main-header--image {
+.header-image {
   height: 67px;
 }
 </style>

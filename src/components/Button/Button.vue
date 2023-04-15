@@ -1,7 +1,8 @@
 <template>
   <button 
-    :type="typeButton" 
-    class="btn btn-primary small-texts mt-24"
+    :type="typeButton"
+    :class="{'btn-alternative': isButtonAlternative}"
+    class=" btn-primary small-texts mt-24"
   >
     {{ textButton }}
   </button>
@@ -19,6 +20,11 @@ export default {
       required: false,
       type: String,
       default: 'submit'
+    },
+    isButtonAlternative: {
+      required: false, 
+      type: Boolean,
+      default: false
     }
   }
 }
@@ -32,5 +38,8 @@ export default {
     background: var(--color-pink);
     text-transform: uppercase;
     color: var(--color-white);
+  }
+  .btn-alternative {
+    padding: 18px 24px;
   }
 </style>

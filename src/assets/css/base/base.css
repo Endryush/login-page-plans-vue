@@ -13,7 +13,8 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
+	height: auto;
 }
 
 input {
@@ -37,6 +38,10 @@ label {
 	margin-bottom: 5px;
 }
 
+a, button {
+	cursor: pointer;
+}
+
 .form-group {
 	margin-bottom: 16px;
 }
@@ -47,8 +52,28 @@ label {
     line-height: var(--font-line-height-small);
 }
 
+.display-flex-column {
+	display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.highlight {
+  color: var(--color-pink);
+  text-decoration: underline;
+}
+
+.underline {
+	text-decoration: underline;
+}
+
 .mt-5 {
 	margin-top: 5px;
+}
+
+.mt-10 {
+	margin-top: 10px;
 }
 
 .mt-16 {

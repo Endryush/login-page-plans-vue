@@ -2,6 +2,7 @@
   --background-body: #fafafc;
   --default-font-family: 'Sora';
   --color-dark: #292D32;
+  --color-dark-alternative: #666666;
   --color-pink: #F30168;
   --color-white: #FFFFFF;
   --color-gray: #515D74;
@@ -9,9 +10,11 @@
   --font-weight-light: 400;
   --font-weight-bold: 700;
   --font-size-small: 16px;
+  --font-size-small-alternative: 17px;
   --font-size-normal: 18px;
   --font-size-large: 28px;
   --font-line-height-small: 20px;
+  --font-line-height-small--alternative: 21px;
   --font-line-height-medium: 23px;
   --font-line-height-large: 35px;
 }

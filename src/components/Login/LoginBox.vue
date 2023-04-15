@@ -35,9 +35,9 @@
         />
       </div>
 
-      <span class="login-box__small-text small-texts">
+      <a class="login-box__small-text small-texts">
         Esqueci minha senha
-      </span>
+      </a>
 
       <Button 
         text-button="Fazer Login" 
@@ -52,7 +52,7 @@
 </template>
 
 <script>
-import axios from '@/utils/axios.js';
+import axios from '@/config/axios.js';
 import Button from '../Button/Button.vue';
 import ErrorMessage from '../Error/ErrorMessage.vue';
 
