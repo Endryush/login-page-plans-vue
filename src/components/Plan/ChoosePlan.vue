@@ -53,7 +53,16 @@
 
       <list-items v-if="plan.freeMigration" title="Migração Gratuita;" :items="plan.freeMigration" />
 
-      <list-items v-if="plan.moreServices" title="Você ainda tem" :items="plan.moreServices" />
+      <list-items v-if="plan.moreServices" title="Você ainda tem" :items="plan.moreServices" :blur-content="choosedPlan" />
+    </div>
+    <div 
+      v-if="choosedPlan" 
+      class="change-plan d-flex"
+    >
+      <button-outline 
+        text-button="Trocar plano"
+        @click="() => this.$router.go(-1)"
+      />
     </div>
   </div>
 </template>
@@ -61,6 +70,7 @@
 import Button from '../Button/Button.vue';
 import ListItems from './List/ListItems.vue';
 import Badge from './Badge/Badge.vue';
+import ButtonOutline from '../Button/ButtonOutline/ButtonOutline.vue';
 
 export default {
   name: 'ChossePlanBox',
@@ -68,7 +78,8 @@ export default {
   components: {
     Button,
     ListItems,
-    Badge
+    Badge,
+    ButtonOutline
   },
 
   props: {
@@ -170,4 +181,8 @@ export default {
   margin-top: 24px;
 }
 /* BOX BODY */
+
+.change-plan {
+  padding: 0 16px;
+}
 </style>

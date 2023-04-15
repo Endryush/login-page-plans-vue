@@ -1,7 +1,7 @@
 <template>
   <div class="box-login display-flex-column mt-16">
     <login-box />
-    <h3 class="nt-32">
+    <h3 class="mt-32">
       Ainda não tem conta? 
 
       <router-link to="/signup" class="highlight">Cadastre-se</router-link> 

@@ -39,6 +39,10 @@ export default {
     text-transform: uppercase;
     color: var(--color-white);
   }
+
+  .btn-primary:hover {
+    background: var(--color-pink--secondary);
+  }
   .btn-alternative {
     padding: 18px 24px;
   }
