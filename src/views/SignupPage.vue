@@ -9,31 +9,85 @@
       </ul>
     </div>
     <div v-else-if="step === 2">
-      <h2>Formulário de cadastro:</h2>
-      <p>Plano escolhido</p>
-      <choose-plan :plan="choosedPlan" />
-      <form>
-        <label for="nome">Nome:</label>
-        <input type="text" id="nome" v-model="nome" required>
-        <br>
-        <label for="email">Email:</label>
-        <input type="email" id="email" v-model="email" required>
-        <br>
-        <label for="senha">Senha:</label>
-        <input type="password" id="senha" v-model="senha" required>
-        <br>
-        <button type="submit">Cadastrar</button>
-      </form>
+      <div class="d-flex">
+        <div class="form-register">
+          <h2>Formulário de cadastro:</h2>
+          <p>Plano escolhido</p>
+          <form @submit.prevent="register" >
+            <div class="form-group">
+              <label for="name">Nome completo</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                id="name" 
+                v-model="name" 
+                placeholder="Informe seu nome completo" 
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="number">Celular</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                id="number" 
+                v-model="numberPhone"
+                v-mask="'(##) #####-####'"
+                placeholder="(99) 99999-0000"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input 
+                type="email" 
+                class="form-control" 
+                id="email" 
+                v-model="email" 
+                placeholder="Informe seu e-mail" 
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="password">Senha</label>
+              <input 
+                type="password" 
+                class="form-control" 
+                id="password" 
+                v-model="password"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="passwordConfirmation">Confirme sua senha</label>
+              <input 
+                type="password" 
+                class="form-control" 
+                id="passwordConfirmation" 
+                v-model="passwordConfirmation"
+                required
+              />
+            </div>
+            <button type="submit">Cadastrar</button>
+          </form>
+        </div>
+        <choose-plan :plan="choosedPlan" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import ChoosePlan from '@/components/Plan/ChoosePlan.vue'
-import { plans } from '@/utils/plan-list.js' 
-export default {
+import ChoosePlan from '@/components/Plan/ChoosePlan.vue';
+import { plans } from '@/utils/plan-list.js';
+
+export default{
   components: {
-    ChoosePlan
+    ChoosePlan,
   },
 
   data() {
@@ -41,9 +95,11 @@ export default {
       step: 1,
       plans: plans,
       choosedPlan: '',
-      nome: '',
+      name: '',
       email: '',
-      senha: ''
+      numberPhone: '',
+      password: '',
+      passwordConfirmation: ''
     };
   },
 
