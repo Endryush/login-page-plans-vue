@@ -17,6 +17,20 @@ body {
 	height: auto;
 }
 
+h2 {
+	font-weight: var(--font-weight-bold);
+	font-size: var(--font-size-large);
+	line-height: var(--font-line-height-large);
+	color: var(--color-dark);
+}
+
+h3 {
+	font-weight: var(--font-weight-light);
+  font-size: var(--font-size-normal);
+  line-height: var(--font-line-height-medium);
+	color: var(--color-dark);
+}
+
 input {
 	box-sizing: border-box;
 	display: flex;
@@ -28,6 +42,17 @@ input {
 	background: var(--color-white);
 	border: 1px solid rgba(81, 93, 116, 0.5);
 	border-radius: 5px;
+	height: 60px;
+}
+
+input[type=number]::-webkit-inner-spin-button { 
+	-webkit-appearance: none;
+	
+}
+input[type=number] { 
+ -moz-appearance: textfield;
+ appearance: textfield;
+
 }
 
 label {
@@ -35,7 +60,6 @@ label {
 	font-size: var(--font-size-small);
 	line-height: var(--font-line-height-small);
 	color: var(--color-dark);
-	margin-bottom: 5px;
 }
 
 a, button {
@@ -44,6 +68,10 @@ a, button {
 
 .form-group {
 	margin-bottom: 16px;
+}
+
+.form-control {
+	margin-top: 8px;
 }
 
 .small-texts {
@@ -92,4 +120,12 @@ a, button {
 
 .mt-32 {
 	margin-top: 32px;
+}
+
+.mb-5 {
+	margin-bottom: 5px;
+}
+
+.my-16 {
+	margin: 16px 0;
 }

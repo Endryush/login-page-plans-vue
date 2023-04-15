@@ -1,18 +1,15 @@
 <template>
   <div class="box-plan">
     <div class="box-header">
-      <div 
-        v-if="plan.moreUsed"
-        class="box-header__more-used"
-      > 
-        Mais usado
-      </div>
+      <badge v-if="plan.moreUsed || choosedPlan" :choosed-plan="choosedPlan" />
+
       <h1 
-        :class="{ 'alternative-header' :plan.moreUsed}"
+        :class="{ 'alternative-header' :plan.moreUsed || choosedPlan}"
         class="box-header__name color-alternative"
       >
         {{ plan.name }}
       </h1>
+
       <template v-if="isPriceFree()">
         <h1 class="box-header__price">
           {{ plan.price }}
@@ -33,7 +30,10 @@
         </span>
       </div>
 
-      <div class="box-header__button">
+      <div 
+        v-if="!choosedPlan" 
+        class="box-header__button"
+      >
         <Button
           type-button="button"
           text-button="Escolher esse plano"
@@ -60,19 +60,26 @@
 <script>
 import Button from '../Button/Button.vue';
 import ListItems from './List/ListItems.vue';
+import Badge from './Badge/Badge.vue';
 
 export default {
   name: 'ChossePlanBox',
 
   components: {
     Button,
-    ListItems
+    ListItems,
+    Badge
   },
 
   props: {
     plan: {
       required: true,
       type: Object
+    },
+    choosedPlan: {
+      required: false,
+      type: Boolean,
+      default: false
     }
   },
 
@@ -110,19 +117,6 @@ export default {
 
 .box-header {
   text-align: center;
-}
-
-.box-header__more-used {
-  position: relative;
-  width: fit-content;
-  margin-top: -50px;
-  padding: 8px 16px;
-  background: #10C300;
-  border-radius: 10px;
-  color: white;
-  margin-left: auto;
-  margin-right: auto;
-  text-transform: uppercase;
 }
 
 .box-header__name {

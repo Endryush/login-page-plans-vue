@@ -4,78 +4,27 @@
       <h2 class="choose-plan">Escolha o seu plano</h2>
       <ul class="plan-list">
         <li v-for="(plan, index) in plans" :key="index">
-          <choose-plan :plan="plan" @choose-plan='choosePlan' />
+          <choose-plan 
+            :plan="plan" 
+            @choose-plan='choosePlan' 
+          />
         </li>
       </ul>
     </div>
     <div v-else-if="step === 2">
-      <div class="d-flex">
+      <div class="register-plan">
         <div class="form-register">
-          <h2>Formulário de cadastro:</h2>
-          <p>Plano escolhido</p>
-          <form @submit.prevent="register" >
-            <div class="form-group">
-              <label for="name">Nome completo</label>
-              <input 
-                type="text" 
-                class="form-control" 
-                id="name" 
-                v-model="name" 
-                placeholder="Informe seu nome completo" 
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="number">Celular</label>
-              <input 
-                type="text" 
-                class="form-control" 
-                id="number" 
-                v-model="numberPhone"
-                v-mask="'(##) #####-####'"
-                placeholder="(99) 99999-0000"
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input 
-                type="email" 
-                class="form-control" 
-                id="email" 
-                v-model="email" 
-                placeholder="Informe seu e-mail" 
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="password">Senha</label>
-              <input 
-                type="password" 
-                class="form-control" 
-                id="password" 
-                v-model="password"
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="passwordConfirmation">Confirme sua senha</label>
-              <input 
-                type="password" 
-                class="form-control" 
-                id="passwordConfirmation" 
-                v-model="passwordConfirmation"
-                required
-              />
-            </div>
-            <button type="submit">Cadastrar</button>
-          </form>
+          <signup-form 
+            @sign-up="signUp"
+          />
         </div>
-        <choose-plan :plan="choosedPlan" />
+        <div class="register-plan__choosed-plan">
+          <choose-plan 
+            :plan="choosedPlan" 
+            choosed-plan
+            @change-plan="changePlan"
+          />
+        </div> 
       </div>
     </div>
   </div>
@@ -84,22 +33,19 @@
 <script>
 import ChoosePlan from '@/components/Plan/ChoosePlan.vue';
 import { plans } from '@/utils/plan-list.js';
+import SignupForm from '@/components/SignupForm/SignupForm.vue';
 
 export default{
   components: {
     ChoosePlan,
+    SignupForm
   },
 
   data() {
     return {
       step: 1,
       plans: plans,
-      choosedPlan: '',
-      name: '',
-      email: '',
-      numberPhone: '',
-      password: '',
-      passwordConfirmation: ''
+      choosedPlan: ''
     };
   },
 
@@ -119,6 +65,11 @@ export default{
       this.choosedPlan = plan;
       this.step = 2;
       history.pushState({ step: 2 }, null, "?step=2");
+    },
+
+    signUp (data) {
+      debugger
+      console.log(data)
     }
   },
 };
@@ -129,6 +80,24 @@ export default{
   width: 75vw;
 }
 
+.register-plan {
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+  gap: 16px;
+  margin-top: 40px
+}
+
+.form-register {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  background: var(--color-white);
+  border: 1px solid var(--color-white-secondary);
+  border-radius: 5px;
+  padding: 28px 30px;
+}
+
 .choose-plan {
   font-weight: var(--font-weight-light);
   font-size: var(--font-size-small);
@@ -136,6 +105,10 @@ export default{
   text-align: center;
   color: #0F1522;
   margin: 24px 0 35px;
+}
+
+.register-plan__choosed-plan {
+  widows: 50%;
 }
 
 .plan-list {

@@ -1,10 +1,10 @@
 <template>
   <div class="login-box">
-    <h1 class="login-box__title">
+    <h2>
       Entre na sua conta
-    </h1>
+    </h2>
 
-    <p class="login-box__main-text mt-5">
+    <p class="mt-5">
       Para acessar sua conta informe seu e-mail e senha
     </p>
 
@@ -98,20 +98,6 @@ export default {
   border: 1px solid var(--color-white-secondary);
   border-radius: 5px;
   padding: 28px 33px 35px;
-}
-
-.login-box__title {
-  font-weight: var(--font-weight-bold);
-  font-size: var(--font-size-large);
-  line-height: var(--font-line-height-large);
-  color: var(--color-dark);
-}
-
-.login-box__main-text {
-  font-weight: var(--font-weight-light);
-  font-size: var(--font-size-normal);
-  line-height: var(--font-line-height-medium);
-  color: var(--color-dark);
 }
 
 .login-box__small-text {

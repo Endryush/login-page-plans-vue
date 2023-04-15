@@ -1,11 +1,11 @@
 <template>
   <div class="box-login display-flex-column mt-16">
     <login-box />
-    <p class="box-login__account">
+    <h3 class="nt-32">
       Ainda não tem conta? 
 
       <router-link to="/signup" class="highlight">Cadastre-se</router-link> 
-    </p>
+    </h3>
   </div>
 </template>
 
@@ -25,11 +25,4 @@ export default {
   width: 40vw;
 }
 
-.box-login__account {
-  font-weight: var(--font-weight-light);
-  font-size: var(--font-size-normal);
-  line-height: var(--font-line-height-medium);
-  color: var(--color-dark);
-  margin-top: 32px;
-}
 </style>
