@@ -10,6 +10,7 @@
         id="name" 
         v-model="formData.name" 
         placeholder="Informe seu nome completo" 
+        minlength="6"
         required
       />
     </div>
@@ -46,6 +47,7 @@
         class="form-control" 
         id="password" 
         v-model="formData.password"
+        minlength="6"
         required
       />
     </div>
