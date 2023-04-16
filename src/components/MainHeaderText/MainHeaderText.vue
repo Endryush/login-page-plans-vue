@@ -32,7 +32,7 @@ export default {
 
 @media screen and (max-width: 600px) {
   .subtext-header {
-    padding: 0 24px;
+    padding: 0 56px;
   }
 }
 </style>
