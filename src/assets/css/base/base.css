@@ -161,4 +161,8 @@ a, button {
 	.small-texts, label, .subtext {
     font-size: var(--font-size-small--mobile);
 	}
+
+	.highlight {
+		white-space: pre;
+	 }
 }

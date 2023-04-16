@@ -26,4 +26,10 @@
     border-radius: 5px;
     width: 100%;
   }
+
+  @media screen and (max-width: 600px) {
+    .btn-outline {
+      margin-top: 16px;
+    }
+  }
 </style>
