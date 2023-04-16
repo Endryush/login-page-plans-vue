@@ -80,7 +80,10 @@
 
     </div>
 
-    <div class="mobile-show-area">
+    <div
+      v-if="!choosedPlan"
+      class="mobile-show-area"
+    >
       <a 
         href="#" 
         class="underline"

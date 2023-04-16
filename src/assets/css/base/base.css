@@ -150,7 +150,15 @@ a, button {
 		font-size: var(--font-size-large--mobile);
 	}
 
-	.subtext {
+	h3 {
 		font-size: var(--font-size-small);
+	}
+
+	.main-container__home {
+		justify-content: unset;
+	}
+
+	.small-texts, label, .subtext {
+    font-size: var(--font-size-small--mobile);
 	}
 }

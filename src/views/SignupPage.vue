@@ -22,7 +22,6 @@
           <choose-plan 
             :plan="choosedPlan" 
             choosed-plan
-            @change-plan="changePlan"
           />
         </div> 
       </div>
@@ -145,6 +144,29 @@ export default{
   }
   .plan-list li {
     margin: 0;
+    order: 1;
+  }
+
+  .plan-list li:nth-child(2) {
+    order: 0;
+  }
+
+  .register-plan { 
+    flex-direction: column;
+    padding: 0;
+    gap: 0;
+  }
+
+  .register-plan div {
+    order: 1;
+  }
+
+  .register-plan div:nth-child(2) {
+    order: 0;
+  }
+
+  .register-plan__choosed-plan {
+    width: 100%;
   }
 }
 </style>

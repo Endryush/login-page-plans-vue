@@ -41,6 +41,7 @@ export default {
 @media only screen and (max-width: 600px) { 
   .badge__more-used {
     margin-top: -30px;
+    font-size: var(--font-size-small--mobile);
   }
 }
 </style>

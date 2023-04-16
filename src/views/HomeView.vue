@@ -44,4 +44,16 @@ export default {
   .box-video__video {
     height: 30rem;
   }
+
+  @media screen and (max-width: 600px) {
+    .home {
+      height: auto;
+      width: auto;
+      padding: 32px 16px;
+    }
+
+    .box-video__video {
+      height: 20rem;
+    }
+  }
 </style>
