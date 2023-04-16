@@ -84,4 +84,19 @@ export default {
   padding: 16px 32px;
   cursor: pointer;
 }
+
+@media screen and (max-width: 600px) {
+  .header-logout img {
+    margin-left: 16px;
+    width: 80px;
+  } 
+
+  .header-logout div {
+    margin-right: 16px;
+  } 
+
+  .logout {
+    padding: 8px 16px;
+  }
+}
 </style>
