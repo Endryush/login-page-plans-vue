@@ -29,4 +29,10 @@ export default {
 .subtext-header {
   text-align: center;
 }
+
+@media screen and (max-width: 600px) {
+  .subtext-header {
+    padding: 0 24px;
+  }
+}
 </style>
