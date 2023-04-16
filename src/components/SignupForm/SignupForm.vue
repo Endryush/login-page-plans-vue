@@ -17,11 +17,12 @@
     <div class="form-group">
       <label for="number">Celular</label>
       <input 
-        type="number" 
+        type="tel" 
         class="form-control" 
         id="number" 
         v-model="formData.numberPhone"
         placeholder="(99) 99999-0000"
+        v-phone="'(##) #####-####'"
         required
       />
     </div>
@@ -108,9 +109,14 @@
 <script>
   import Button from '@/components/Button/Button.vue';
   import ErrorMessage from '../Error/ErrorMessage.vue';
+  import phoneDirective from '@/directives/phoneDirective.js';
 
   export default {
     name: 'SignupForm',
+
+    directives: {
+      'phone': phoneDirective
+    },
     
     components: {
       Button,
