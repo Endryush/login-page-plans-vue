@@ -134,6 +134,13 @@
 
 
     methods: {
+      /**
+       * Signs up the user by emitting a 'sign-up' event with the user's form data,
+       * after validating that the passwords match.
+       *
+       * @emits sign-up
+       * @returns {void}
+       */
       signup () {
         if (this.formData.password !== this.formData.passwordConfirmation) {
           this.errorPassword = true

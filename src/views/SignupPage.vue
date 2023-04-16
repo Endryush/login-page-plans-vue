@@ -61,12 +61,31 @@ export default{
   },
 
   methods: {
+    /**
+     * Choose a plan to proceed with the subscription and update the step to 2
+     * 
+     * @param {Object} plan - The plan object with the plan's details
+     * @returns {void}
+     */
     choosePlan(plan) {
       this.choosedPlan = plan;
       this.step = 2;
       history.pushState({ step: 2 }, null, "?step=2");
     },
 
+    /**
+     * Performs a sign up request to the backend API with the provided data.
+      * @param {Object} data - An object containing the user's sign up data.
+      * @param {string} data.name - The user's name.
+      * @param {string} data.email - The user's email.
+      * @param {string} data.password - The user's password.
+      * @param {string} data.numberPhone - The user's phone number.
+      * @param {boolean} data.agreeTerms - Whether the user has agreed to the terms.
+      * @param {string} data.siteDomain - The user's site domain.
+      * 
+      * @returns {void}
+      * @throws {Error} If there's an error during the sign up request.
+      */
     async signUp (data) {
       try {
         const response = await axios.post('/users', {

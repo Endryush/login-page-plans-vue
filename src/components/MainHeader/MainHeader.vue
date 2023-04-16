@@ -29,16 +29,31 @@ export default {
   components: { MainHeaderText },
 
   computed: {
+    /**
+     *  Rule to show header subtext if the user is in the signup page
+     *
+     * @returns {Boolean}
+     */
     routeConditionHeaderSubtext () {
       return this.$route.name === ROUTES_NAME.SIGNUP
     },
 
+    /**
+     *  Rule to show header logout button if the user is in the home page
+     *
+     * @returns {Boolean}
+     */
     routeConditionLogout () {
       return this.$route.name === ROUTES_NAME.HOME
     }
   },
 
   methods: {
+    /**
+     *  Logout user by redirecting to the home page.
+     *
+     * @returns {void}
+     */
     logout () {
       this.$router.push('/');
     }

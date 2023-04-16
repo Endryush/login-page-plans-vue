@@ -72,6 +72,12 @@ export default {
     }
   },
   methods: {
+    /**
+     *  Logs a user in with a email and password
+     *
+     * @returns {Promise} A promise that resolves to an object with the user's access token.
+     * @throws {Error} If the email or password is incorrect.
+     */
     async login() {
       try {
         const response = await axios.post('/auth/login', {

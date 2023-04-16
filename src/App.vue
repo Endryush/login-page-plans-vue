@@ -20,6 +20,11 @@
     components: { MainHeader },
 
     methods: {
+      /**
+       * Checks if the user is on a mobile device and currently on the home page
+       * 
+       * @returns {Boolean} - Returns true if the user is on a mobile device and currently on the home page
+       */
       isMobileAndHome () {
         return this.isMobileUser() &&
         this.$route.name === ROUTES_NAME.HOME

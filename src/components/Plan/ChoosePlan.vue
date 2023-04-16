@@ -138,6 +138,12 @@ export default {
   },
 
   watch: {
+    /**
+     *  Watches for user clicks to see more or less plan details.
+     *
+     * @param {boolean} value - The new value of the 'seeMoreLess' data property.
+     * @returns {void}
+     */
     seeMoreLess (value) {
       const divElement = document.getElementById(`list-items${this.plan.id}`)
       const display = value ? 'block' : 'none'
@@ -148,10 +154,21 @@ export default {
   },
 
   methods: {
+    /**
+     *  Determines if the plan is free.
+     *
+     * @returns {Boolean}
+     */
     isPriceFree () {
       return typeof(this.plan?.price) !== 'number'
     },
 
+    /**
+     *  Emits an event to the parent component with the selected plan.
+     *
+     * @emits choose-plan
+     * @returns {void}
+     */
     choosePlan () {
       this.$emit('choose-plan', this.plan );
     }
