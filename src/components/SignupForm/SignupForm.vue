@@ -65,7 +65,7 @@
 
     <error-message 
       v-if="errorPassword" 
-      error-text="As senhas devem ser iguais!"
+      :error-text="errorPasswordMessage"
       class="mb-16"
     />
 
@@ -109,9 +109,10 @@
   </form>
 </template>
 <script>
-  import Button from '@/components/Button/Button.vue';
-  import ErrorMessage from '../Error/ErrorMessage.vue';
   import phoneDirective from '@/directives/phoneDirective.js';
+  import Button from '@/components/Button/Button.vue';
+  import ErrorMessage from '@/components/Error/ErrorMessage.vue';
+  import { ERROR_PASSWORD } from '@/enum/errorMessagePassword.js';
 
   export default {
     name: 'SignupForm',
@@ -136,7 +137,8 @@
           siteDomain: '',
           agreeTerms: false
         },
-        errorPassword: false
+        errorPassword: false,
+        errorPasswordMessage: ''
       };
     },
 
@@ -150,12 +152,59 @@
        * @returns {void}
        */
       signup () {
-        if (this.formData.password !== this.formData.passwordConfirmation) {
-          this.errorPassword = true
-          return
-        }
+        if (!this.isValidPassword()) return
 
         this.$emit('sign-up', this.formData );
+      },
+
+      /**
+       * Checks if the password entered in the form is valid
+       *
+       * @return {boolean} True if the password is valid
+       */
+      isValidPassword() {
+        const isSamePassword = this.isSamePassword();
+        const isStrongPassword = this.isStrongPassword();
+
+        if (!isSamePassword) {
+          this.setErrorPassword(ERROR_PASSWORD.SAME_PASSWORD);
+        }
+
+        if (!isStrongPassword) {
+          this.setErrorPassword(ERROR_PASSWORD.STRONG_PASSWORD);
+        }
+
+        return isSamePassword && isStrongPassword;
+      },
+
+      /**
+       * Checks if the password is the same in the password confirmation
+       *
+       * @return {boolean} True if the password is the same
+       */
+      isSamePassword () {
+        return this.formData.password === this.formData.passwordConfirmation
+      },
+
+      /**
+       * Checks if the password meets the strong password criteria
+       *
+       * @return {boolean} True if the password is strong, false otherwise
+       */
+      isStrongPassword () {
+        const regexStrongPassword = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*\W)/;
+        
+        return regexStrongPassword.test(this.formData.password)
+      },
+
+      /**
+       * Sets the error password message and flag
+       *
+       * @param {string} errorMessage - The error message to set
+       */
+      setErrorPassword(errorMessage) {
+        this.errorPassword = true;
+        this.errorPasswordMessage = errorMessage;
       }
     }
   }
