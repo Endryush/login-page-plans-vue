@@ -74,18 +74,19 @@ export default {
   methods: {
     /**
      *  Logs a user in with a email and password
-     *
-     * @returns {Promise} A promise that resolves to an object with the user's access token.
-     * @throws {Error} If the email or password is incorrect.
+     *  If the credentials are correct, save the user ID to the Vuex Store and redirect to the home page
+     * 
+     * @returns {Promise} A promise that resolves to an object with the user's access token
+     * @throws {Error} If the email or password is incorrect
      */
     async login() {
       try {
-        const response = await axios.post('/auth/login', {
-          username: this.email,
+        const response = await axios.post('/users', {
+          email: this.email,
           password: this.password
         }); 
-        if (response.data?.token) {
-          this.$store.dispatch('setUserToken', response.data.token);
+        if (response.data?.id) {
+          this.$store.dispatch('setUserId', response.data.id);
           this.$router.push('/home');
         }
       } catch (error) {

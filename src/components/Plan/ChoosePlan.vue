@@ -155,7 +155,7 @@ export default {
 
   methods: {
     /**
-     *  Determines if the plan is free.
+     *  Determines if the plan is free
      *
      * @returns {Boolean}
      */
@@ -164,7 +164,7 @@ export default {
     },
 
     /**
-     *  Emits an event to the parent component with the selected plan.
+     *  Emits an event to the parent component with the selected plan
      *
      * @emits choose-plan
      * @returns {void}

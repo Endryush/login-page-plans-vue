@@ -25,6 +25,14 @@
 export default {
   name: 'HomeView',
 
+  beforeMount () {
+    const hasUserId = this.$store.getters.getUserid;
+    
+    if (!hasUserId) {
+      this.$router.push('/');
+    }
+  }
+
 }
 </script>
 <style scoped>

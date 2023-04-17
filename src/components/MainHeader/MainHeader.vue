@@ -50,11 +50,12 @@ export default {
 
   methods: {
     /**
-     *  Logout user by redirecting to the home page.
+     *  Logout user by redirecting to the home page
      *
      * @returns {void}
      */
     logout () {
+      this.$store.dispatch('setUserId', null);
       this.$router.push('/');
     }
   }
@@ -82,6 +83,9 @@ export default {
   background: #FFFFFF;
   border-radius: 5px;
   padding: 16px 32px;
+}
+
+.logout label {
   cursor: pointer;
 }
 
