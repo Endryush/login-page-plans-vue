@@ -132,7 +132,7 @@ export default{
 
 .form-register {
   width: 100%;
-  height: 100%;
+  height: auto;
   box-sizing: border-box;
   background: var(--color-white);
   border: 1px solid var(--color-white-secondary);

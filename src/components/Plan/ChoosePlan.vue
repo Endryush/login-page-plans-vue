@@ -184,9 +184,10 @@ export default {
 
 /* BOX HEADER */
 .box-plan {
-  background: #FFFFFF;
+  background: var(--color-white);
   border-radius: 5px;
   padding: 40px;
+  border: 1px solid var(--color-white-secondary);
 }
 
 .box-header {
