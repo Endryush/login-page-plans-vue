@@ -55,9 +55,13 @@
 import axios from '@/config/axios.js';
 import Button from '../Button/Button.vue';
 import ErrorMessage from '../Error/ErrorMessage.vue';
+import Cookie from '@/mixins/cookie';
+import { COOKIE_NAMES } from '@/enum/cookieNames.js'
 
 export default {
   name: 'LoginBox',
+
+  mixins: [Cookie],
 
   components: {
     Button,
@@ -74,7 +78,7 @@ export default {
   methods: {
     /**
      *  Logs a user in with a email and password
-     *  If the credentials are correct, save the user ID to the Vuex Store and redirect to the home page
+     *  If the credentials are correct, set userLogged in cookies and redirect to the home page
      * 
      * @returns {Promise} A promise that resolves to an object with the user's access token
      * @throws {Error} If the email or password is incorrect
@@ -86,7 +90,7 @@ export default {
           password: this.password
         }); 
         if (response.data?.id) {
-          this.$store.dispatch('setUserId', response.data.id);
+          this.setCookie(COOKIE_NAMES.IS_LOGGED_USER, true);
           this.$router.push('/home');
         }
       } catch (error) {

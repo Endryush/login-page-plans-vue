@@ -22,9 +22,14 @@
 </template>
 <script>
 import MainHeaderText from '../MainHeaderText/MainHeaderText.vue';
+import Cookie from '@/mixins/cookie';
 import { ROUTES_NAME } from '@/enum/routeNames.js'
+import { COOKIE_NAMES } from '@/enum/cookieNames.js'
+
 export default {
   name: 'MainHeader',
+
+  mixins: [Cookie],
 
   components: { MainHeaderText },
 
@@ -51,11 +56,12 @@ export default {
   methods: {
     /**
      *  Logout user by redirecting to the home page
+     *  remove userLogged from cookies
      *
      * @returns {void}
      */
     logout () {
-      this.$store.dispatch('setUserId', null);
+      this.removeCookie(COOKIE_NAMES.IS_LOGGED_USER, false)
       this.$router.push('/');
     }
   }

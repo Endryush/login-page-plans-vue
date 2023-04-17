@@ -21,12 +21,16 @@
 </template>
 
 <script>
+import Cookie from '@/mixins/cookie';
+import { COOKIE_NAMES } from '@/enum/cookieNames.js';
 
 export default {
   name: 'HomeView',
 
+  mixins: [Cookie],
+
   beforeMount () {
-    const hasUserId = this.$store.getters.getUserid;
+    const hasUserId = this.getCookie(COOKIE_NAMES.IS_LOGGED_USER);
     
     if (!hasUserId) {
       this.$router.push('/');

@@ -31,11 +31,18 @@
 
 <script>
 import axios from '@/config/axios.js';
+import { COOKIE_NAMES } from '@/enum/cookieNames.js';
 import { plans } from '@/utils/plan-list.js';
 import ChoosePlan from '@/components/Plan/ChoosePlan.vue';
 import SignupForm from '@/components/SignupForm/SignupForm.vue';
+import Cookie from '@/mixins/cookie';
+
 
 export default{
+  name: 'SignupView',
+
+  mixins: [Cookie],
+
   components: {
     ChoosePlan,
     SignupForm
@@ -75,17 +82,18 @@ export default{
 
     /**
      * Performs a sign up request to the backend API with the provided data.
-      * @param {Object} data - An object containing the user's sign up data.
-      * @param {string} data.name - The user's name.
-      * @param {string} data.email - The user's email.
-      * @param {string} data.password - The user's password.
-      * @param {string} data.numberPhone - The user's phone number.
-      * @param {boolean} data.agreeTerms - Whether the user has agreed to the terms.
-      * @param {string} data.siteDomain - The user's site domain.
-      * 
-      * @returns {void}
-      * @throws {Error} If there's an error during the sign up request.
-      */
+     * 
+     * @param {Object} data - An object containing the user's sign up data.
+     * @param {string} data.name - The user's name.
+     * @param {string} data.email - The user's email.
+     * @param {string} data.password - The user's password.
+     * @param {string} data.numberPhone - The user's phone number.
+     * @param {boolean} data.agreeTerms - Whether the user has agreed to the terms.
+     * @param {string} data.siteDomain - The user's site domain.
+     * 
+     * @returns {void}
+     * @throws {Error} If there's an error during the sign up request.
+     */
     async signUp (data) {
       try {
         const response = await axios.post('/users', {
@@ -98,7 +106,7 @@ export default{
         }); 
 
         if (response.data) {
-          await this.$store.dispatch('setUserId', response.data.id);
+          this.setCookie(COOKIE_NAMES.IS_LOGGED_USER, true)
           this.$router.push('/home');
         }
       } catch (error) {
